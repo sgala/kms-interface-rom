@@ -232,6 +232,26 @@
       ]
     },
     {
+      "name": "MixerPort",
+      "extends": "MediaElement",
+      "constructors": [
+        {
+          "params": [
+            {
+              "name": "mediaMixer",
+              "type": "MediaMixer"
+            },
+            {
+              "name": "garbagePeriod",
+              "type": "int",
+              "optional": true,
+              "defaultValue": 120
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "PointerDetectorAdvFilter",
       "extends": "Filter",
       "constructors": [
