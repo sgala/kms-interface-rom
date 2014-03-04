@@ -595,7 +595,6 @@
     {
       "name": "DispatcherMixer",
       "extends": "MediaMixer",
-      "abstract": true,
       "constructors": [
         {
           "params": [
@@ -610,6 +609,21 @@
               "defaultValue": 120
             }
           ]
+        }
+      ],
+      "methods": [
+        {
+          "name": "setSource",
+          "params": [
+            {
+              "name": "source",
+              "type": "MixerPort"
+            }
+          ]
+        },
+        {
+          "name": "removeSource",
+          "params": []
         }
       ]
     },
