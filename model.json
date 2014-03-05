@@ -1049,11 +1049,6 @@
           "name": "image",
           "type": "String",
           "optional": true
-        },
-        {
-          "name": "inactiveImage",
-          "type": "String",
-          "optional": true
         }
       ],
       "name": "PointerDetectorWindowMediaParam"
