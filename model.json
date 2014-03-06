@@ -154,7 +154,7 @@
       ]
     },
     {
-      "name": "MediaMixer",
+      "name": "Hub",
       "extends": "MediaObject",
       "abstract": true,
       "constructors": [
@@ -238,8 +238,8 @@
         {
           "params": [
             {
-              "name": "mediaMixer",
-              "type": "MediaMixer"
+              "name": "hub",
+              "type": "Hub"
             },
             {
               "name": "garbagePeriod",
@@ -594,7 +594,7 @@
     },
     {
       "name": "DispatcherMixer",
-      "extends": "MediaMixer",
+      "extends": "Hub",
       "constructors": [
         {
           "params": [
