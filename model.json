@@ -593,7 +593,7 @@
       ]
     },
     {
-      "name": "DispatcherMixer",
+      "name": "Dispatcher",
       "extends": "Hub",
       "constructors": [
         {
