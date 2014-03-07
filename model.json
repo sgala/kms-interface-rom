@@ -1012,6 +1012,30 @@
           ]
         }
       ]
+    },
+    {
+      "name": "CrowdDetectorFilter",
+      "extends": "Filter",
+      "constructors": [
+        {
+          "params": [
+            {
+              "name": "mediaPipeline",
+              "type": "MediaPipeline"
+            },
+            {
+              "name": "rois",
+              "type": "RegionOfInterest[]"
+            },
+            {
+              "name": "garbagePeriod",
+              "type": "int",
+              "optional": true,
+              "defaultValue": 120
+            }
+          ]
+        }
+      ]
     }
   ],
   "complexTypes": [
@@ -1094,6 +1118,34 @@
         }
       ],
       "name": "WindowParam"
+    },
+    {
+      "typeFormat": "REGISTER",
+      "properties": [
+        {
+          "name": "points",
+          "type": "Point[]"
+        },
+        {
+          "name": "id",
+          "type": "String"
+        }
+      ],
+      "name": "RegionOfInterest"
+    },
+    {
+      "typeFormat": "REGISTER",
+      "properties": [
+        {
+          "name": "x",
+          "type": "int"
+        },
+        {
+          "name": "y",
+          "type": "int"
+        }
+      ],
+      "name": "Point"
     }
   ],
   "events": [
