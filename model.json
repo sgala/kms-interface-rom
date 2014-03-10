@@ -593,6 +593,41 @@
       ]
     },
     {
+      "name": "Dispatcher",
+      "extends": "Hub",
+      "constructors": [
+        {
+          "params": [
+            {
+              "name": "mediaPipeline",
+              "type": "MediaPipeline"
+            },
+            {
+              "name": "garbagePeriod",
+              "type": "int",
+              "optional": true,
+              "defaultValue": 120
+            }
+          ]
+        }
+      ],
+      "methods": [
+        {
+          "name": "connect",
+          "params": [
+            {
+              "name": "source",
+              "type": "HubPort"
+            },
+            {
+              "name": "sink",
+              "type": "HubPort"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "DispatcherOneToMany",
       "extends": "Hub",
       "constructors": [
