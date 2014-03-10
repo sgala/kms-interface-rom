@@ -232,7 +232,7 @@
       ]
     },
     {
-      "name": "MixerPort",
+      "name": "HubPort",
       "extends": "MediaElement",
       "constructors": [
         {
@@ -617,7 +617,7 @@
           "params": [
             {
               "name": "source",
-              "type": "MixerPort"
+              "type": "HubPort"
             }
           ]
         },
