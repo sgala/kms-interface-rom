@@ -36,12 +36,6 @@
     {
       "name": "MediaObject",
       "abstract": true,
-      "constructors": [
-        {
-          "params": [
-          ]
-        }
-      ],
       "methods": [
         {
           "name": "getMediaPipeline",
@@ -112,12 +106,6 @@
       "name": "SessionEndpoint",
       "abstract": true,
       "extends": "Endpoint",
-      "constructors": [
-        {
-          "params": [
-          ]
-        }
-      ],
       "events": [
         "MediaSessionTerminated",
         "MediaSessionStarted"
@@ -126,17 +114,7 @@
     {
       "name": "Hub",
       "extends": "MediaObject",
-      "abstract": true,
-      "constructors": [
-        {
-          "params": [
-            {
-              "name": "mediaPipeline",
-              "type": "MediaPipeline"
-            }
-          ]
-        }
-      ]
+      "abstract": true
     },
     {
       "name": "ZBarFilter",
@@ -158,24 +136,12 @@
     {
       "name": "Filter",
       "abstract": true,
-      "extends": "MediaElement",
-      "constructors": [
-        {
-          "params": [
-          ]
-        }
-      ]
+      "extends": "MediaElement"
     },
     {
       "name": "Endpoint",
       "abstract": true,
-      "extends": "MediaElement",
-      "constructors": [
-        {
-          "params": [
-          ]
-        }
-      ]
+      "extends": "MediaElement"
     },
     {
       "name": "HubPort",
@@ -250,16 +216,6 @@
       "name": "UriEndpoint",
       "abstract": true,
       "extends": "Endpoint",
-      "constructors": [
-        {
-          "params": [
-            {
-              "name": "uri",
-              "type": "String"
-            }
-          ]
-        }
-      ],
       "methods": [
         {
           "name": "getUri",
@@ -580,12 +536,6 @@
       "name": "HttpEndpoint",
       "abstract": true,
       "extends": "SessionEndpoint",
-      "constructors": [
-        {
-          "params": [
-          ]
-        }
-      ],
       "methods": [
         {
           "name": "getUrl",
@@ -750,12 +700,6 @@
       "name": "MediaElement",
       "abstract": true,
       "extends": "MediaObject",
-      "constructors": [
-        {
-          "params": [
-          ]
-        }
-      ],
       "methods": [
         {
           "name": "getMediaSrcs",
