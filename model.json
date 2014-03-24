@@ -1134,6 +1134,56 @@
         }
       ],
       "name": "Media"
+    },
+    {
+      "properties": [
+        {
+          "name": "fluidityPercentage",
+          "type": "float"
+        },
+        {
+          "name": "fluidityLevel",
+          "type": "int"
+        },
+        {
+          "name": "roiID",
+          "type": "String"
+        }
+      ],
+      "extends": "Media",
+      "name": "CrowdDetectorFluidity"
+    },
+    {
+      "properties": [
+        {
+          "name": "occupancyPercentage",
+          "type": "float"
+        },
+        {
+          "name": "occupancyLevel",
+          "type": "int"
+        },
+        {
+          "name": "roiID",
+          "type": "String"
+        }
+      ],
+      "extends": "Media",
+      "name": "CrowdDetectorOccupancy"
+    },
+    {
+      "properties": [
+        {
+          "name": "directionAngle",
+          "type": "float"
+        },
+        {
+          "name": "roiID",
+          "type": "String"
+        }
+      ],
+      "extends": "Media",
+      "name": "CrowdDetectorDirection"
     }
   ]
 }
