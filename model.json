@@ -19,12 +19,6 @@
               "type": "boolean",
               "optional": true,
               "defaultValue": false
-            },
-            {
-              "name": "garbagePeriod",
-              "type": "int",
-              "optional": true,
-              "defaultValue": 120
             }
           ]
         }
@@ -45,12 +39,6 @@
       "constructors": [
         {
           "params": [
-            {
-              "name": "garbagePeriod",
-              "type": "int",
-              "optional": true,
-              "defaultValue": 120
-            }
           ]
         }
       ],
@@ -101,12 +89,6 @@
               "type": "int",
               "optional": true,
               "defaultValue": 2
-            },
-            {
-              "name": "garbagePeriod",
-              "type": "int",
-              "optional": true,
-              "defaultValue": 120
             }
           ]
         }
@@ -121,12 +103,6 @@
             {
               "name": "mediaPipeline",
               "type": "MediaPipeline"
-            },
-            {
-              "name": "garbagePeriod",
-              "type": "int",
-              "optional": true,
-              "defaultValue": 120
             }
           ]
         }
@@ -139,12 +115,6 @@
       "constructors": [
         {
           "params": [
-            {
-              "name": "garbagePeriod",
-              "type": "int",
-              "optional": true,
-              "defaultValue": 120
-            }
           ]
         }
       ],
@@ -163,12 +133,6 @@
             {
               "name": "mediaPipeline",
               "type": "MediaPipeline"
-            },
-            {
-              "name": "garbagePeriod",
-              "type": "int",
-              "optional": true,
-              "defaultValue": 120
             }
           ]
         }
@@ -183,12 +147,6 @@
             {
               "name": "mediaPipeline",
               "type": "MediaPipeline"
-            },
-            {
-              "name": "garbagePeriod",
-              "type": "int",
-              "optional": true,
-              "defaultValue": 120
             }
           ]
         }
@@ -204,12 +162,6 @@
       "constructors": [
         {
           "params": [
-            {
-              "name": "garbagePeriod",
-              "type": "int",
-              "optional": true,
-              "defaultValue": 120
-            }
           ]
         }
       ]
@@ -221,12 +173,6 @@
       "constructors": [
         {
           "params": [
-            {
-              "name": "garbagePeriod",
-              "type": "int",
-              "optional": true,
-              "defaultValue": 120
-            }
           ]
         }
       ]
@@ -240,12 +186,6 @@
             {
               "name": "hub",
               "type": "Hub"
-            },
-            {
-              "name": "garbagePeriod",
-              "type": "int",
-              "optional": true,
-              "defaultValue": 120
             }
           ]
         }
@@ -269,12 +209,6 @@
               "name": "windows",
               "type": "PointerDetectorWindowMediaParam[]",
               "optional": true
-            },
-            {
-              "name": "garbagePeriod",
-              "type": "int",
-              "optional": true,
-              "defaultValue": 120
             }
           ]
         }
@@ -322,12 +256,6 @@
             {
               "name": "uri",
               "type": "String"
-            },
-            {
-              "name": "garbagePeriod",
-              "type": "int",
-              "optional": true,
-              "defaultValue": 120
             }
           ]
         }
@@ -371,12 +299,6 @@
               "type": "boolean",
               "optional": true,
               "defaultValue": false
-            },
-            {
-              "name": "garbagePeriod",
-              "type": "int",
-              "optional": true,
-              "defaultValue": 120
             }
           ]
         }
@@ -394,12 +316,6 @@
             {
               "name": "mediaPipeline",
               "type": "MediaPipeline"
-            },
-            {
-              "name": "garbagePeriod",
-              "type": "int",
-              "optional": true,
-              "defaultValue": 120
             }
           ]
         }
@@ -447,12 +363,6 @@
               "name": "windows",
               "type": "PointerDetectorWindowMediaParam[]",
               "optional": true
-            },
-            {
-              "name": "garbagePeriod",
-              "type": "int",
-              "optional": true,
-              "defaultValue": 120
             }
           ]
         }
@@ -527,12 +437,6 @@
               "name": "backgroundImage",
               "type": "String",
               "optional": true
-            },
-            {
-              "name": "garbagePeriod",
-              "type": "int",
-              "optional": true,
-              "defaultValue": 120
             }
           ]
         }
@@ -559,12 +463,6 @@
       "constructors": [
         {
           "params": [
-            {
-              "name": "garbagePeriod",
-              "type": "int",
-              "optional": true,
-              "defaultValue": 120
-            }
           ]
         }
       ]
@@ -601,12 +499,6 @@
             {
               "name": "mediaPipeline",
               "type": "MediaPipeline"
-            },
-            {
-              "name": "garbagePeriod",
-              "type": "int",
-              "optional": true,
-              "defaultValue": 120
             }
           ]
         }
@@ -636,12 +528,6 @@
             {
               "name": "mediaPipeline",
               "type": "MediaPipeline"
-            },
-            {
-              "name": "garbagePeriod",
-              "type": "int",
-              "optional": true,
-              "defaultValue": 120
             }
           ]
         }
@@ -671,12 +557,6 @@
             {
               "name": "mediaPipeline",
               "type": "MediaPipeline"
-            },
-            {
-              "name": "garbagePeriod",
-              "type": "int",
-              "optional": true,
-              "defaultValue": 120
             }
           ]
         }
@@ -691,12 +571,6 @@
             {
               "name": "mediaPipeline",
               "type": "MediaPipeline"
-            },
-            {
-              "name": "garbagePeriod",
-              "type": "int",
-              "optional": true,
-              "defaultValue": 120
             }
           ]
         }
@@ -709,12 +583,6 @@
       "constructors": [
         {
           "params": [
-            {
-              "name": "garbagePeriod",
-              "type": "int",
-              "optional": true,
-              "defaultValue": 120
-            }
           ]
         }
       ],
@@ -789,12 +657,6 @@
             {
               "name": "mediaPipeline",
               "type": "MediaPipeline"
-            },
-            {
-              "name": "garbagePeriod",
-              "type": "int",
-              "optional": true,
-              "defaultValue": 120
             }
           ]
         }
@@ -840,12 +702,6 @@
             {
               "name": "mediaPipeline",
               "type": "MediaPipeline"
-            },
-            {
-              "name": "garbagePeriod",
-              "type": "int",
-              "optional": true,
-              "defaultValue": 120
             }
           ]
         }
@@ -879,12 +735,6 @@
               "type": "boolean",
               "optional": true,
               "defaultValue": false
-            },
-            {
-              "name": "garbagePeriod",
-              "type": "int",
-              "optional": true,
-              "defaultValue": 120
             }
           ]
         }
@@ -903,12 +753,6 @@
       "constructors": [
         {
           "params": [
-            {
-              "name": "garbagePeriod",
-              "type": "int",
-              "optional": true,
-              "defaultValue": 120
-            }
           ]
         }
       ],
@@ -1037,12 +881,6 @@
             {
               "name": "command",
               "type": "String"
-            },
-            {
-              "name": "garbagePeriod",
-              "type": "int",
-              "optional": true,
-              "defaultValue": 120
             }
           ]
         }
@@ -1061,12 +899,6 @@
             {
               "name": "rois",
               "type": "RegionOfInterest[]"
-            },
-            {
-              "name": "garbagePeriod",
-              "type": "int",
-              "optional": true,
-              "defaultValue": 120
             }
           ]
         }
