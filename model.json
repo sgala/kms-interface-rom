@@ -934,8 +934,90 @@
       "typeFormat": "REGISTER",
       "properties": [
         {
+          "name": "occupancyLevelMin",
+          "type": "int",
+          "optional": true,
+          "defaultValue": 10
+        },
+        {
+          "name": "occupancyLevelMed",
+          "type": "int",
+          "optional": true,
+          "defaultValue": 35
+        },
+        {
+          "name": "occupancyLevelMax",
+          "type": "int",
+          "optional": true,
+          "defaultValue": 65
+        },
+        {
+          "name": "occupancyNumFramesToEvent",
+          "type": "int",
+          "optional": true,
+          "defaultValue": 5
+        },
+        {
+          "name": "fluidityLevelMin",
+          "type": "int",
+          "optional": true,
+          "defaultValue": 10
+        },
+        {
+          "name": "fluidityLevelMed",
+          "type": "int",
+          "optional": true,
+          "defaultValue": 35
+        },
+        {
+          "name": "fluidityLevelMax",
+          "type": "int",
+          "optional": true,
+          "defaultValue": 65
+        },
+        {
+          "name": "fluidityNumFramesToEvent",
+          "type": "int",
+          "optional": true,
+          "defaultValue": 5
+        },
+        {
+          "name": "sendOpticalFlowEvent",
+          "type": "boolean",
+          "optional": true,
+          "defaultValue": false
+        },
+        {
+          "name": "opticalFlowNumFramesToEvent",
+          "type": "int",
+          "optional": true,
+          "defaultValue": 3
+        },
+        {
+          "name": "opticalFlowNumFramesToReset",
+          "type": "int",
+          "optional": true,
+          "defaultValue": 3
+        },
+        {
+          "name": "opticalFlowAngleOffset",
+          "type": "int",
+          "optional": true,
+          "defaultValue": 0
+        }
+      ],
+      "name": "RegionOfInterestConfig"
+    },
+    {
+      "typeFormat": "REGISTER",
+      "properties": [
+        {
           "name": "points",
           "type": "Point[]"
+        },
+        {
+          "name": "regionOfInterestConfig",
+          "type": "RegionOfInterestConfig"
         },
         {
           "name": "id",
