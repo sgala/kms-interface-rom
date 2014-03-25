@@ -135,7 +135,7 @@
     {
       "name": "Hub",
       "extends": "MediaObject",
-      "doc": ".. todo::\n\n    FIXME: documentation needed",
+      "doc": "A Hub is a routing :rom:cls:`MediaObject`. It connects several :rom:cls`endpoints <MediaEndpoint>` together",
       "abstract": true
     },
     {
@@ -173,14 +173,14 @@
     {
       "name": "HubPort",
       "extends": "MediaElement",
-      "doc": ".. todo::\n\n    FIXME: documentation needed",
+      "doc": "This :rom:cls:`MediaElement` specifies a connection with a :rom:cls:`Hub`",
       "constructors": [
         {
-          "doc": ".. todo::\n\n    FIXME: documentation needed",
+          "doc": "Creates a :rom:cls`HubPort` for the given :rom:cls:`Hub`",
           "params": [
             {
               "name": "hub",
-              "doc": ".. todo::\n\n    FIXME: documentation needed",
+              "doc": ":rom:cls`Hub` to which this port belongs",
               "type": "Hub"
             }
           ]
@@ -351,7 +351,7 @@
           "doc": "Obtains the type of media that this pad accepts",
           "params": [],
           "return": {
-            "doc": "One of :rom:ref:`AUDIO`, :rom:ref:`DATA` or :rom:ref:`VIDEO`",
+            "doc": "One of :rom:attr:`MediaType.AUDIO`, :rom:attr:`MediaType.DATA` or :rom:attr:`MediaType.VIDEO`",
             "type": "MediaType"
           }
         },
@@ -538,11 +538,11 @@
     },
     {
       "name": "Dispatcher",
-      "doc": ".. todo::\n\n    FIXME: documentation needed",
+      "doc": "A :rom:cls:`Hub` that allows routing between arbitrary port pairs",
       "extends": "Hub",
       "constructors": [
         {
-          "doc": ".. todo::\n\n    FIXME: documentation needed",
+          "doc": "Create a :rom:cls:`Dispatcher` belonging to the given pipeline.",
           "params": [
             {
               "name": "mediaPipeline",
@@ -555,16 +555,16 @@
       "methods": [
         {
           "name": "connect",
-          "doc": ".. todo::\n\n    FIXME: documentation needed",
+          "doc": "Connects each corresponding :rom:enum:`MediaType` of the given source port with the sink port.",
           "params": [
             {
               "name": "source",
-              "doc": ".. todo::\n\n    FIXME: documentation needed",
+              "doc": "Source port to be connected",
               "type": "HubPort"
             },
             {
               "name": "sink",
-              "doc": ".. todo::\n\n    FIXME: documentation needed",
+              "doc": "Sink port to be connected",
               "type": "HubPort"
             }
           ]
@@ -574,10 +574,10 @@
     {
       "name": "DispatcherOneToMany",
       "extends": "Hub",
-      "doc": ".. todo::\n\n    FIXME: documentation needed",
+      "doc": "A :rom:cls:`Hub` that sends a given source to all the connected sinks",
       "constructors": [
         {
-          "doc": ".. todo::\n\n    FIXME: documentation needed",
+          "doc": "Create a :rom:cls:`DispatcherOneToMany` belonging to the given pipeline.",
           "params": [
             {
               "name": "mediaPipeline",
@@ -590,18 +590,18 @@
       "methods": [
         {
           "name": "setSource",
-          "doc": ".. todo::\n\n    FIXME: documentation needed",
+          "doc": "Sets the source port that will be connected to the sinks of every :rom:cls:`HubPort` of the dispatcher",
           "params": [
             {
               "name": "source",
-              "doc": ".. todo::\n\n    FIXME: documentation needed",
+              "doc": "source to be broadcasted",
               "type": "HubPort"
             }
           ]
         },
         {
           "name": "removeSource",
-          "doc": ".. todo::\n\n    FIXME: documentation needed",
+          "doc": "Remove the source port and stop the media pipeline.",
           "params": []
         }
       ]
@@ -609,10 +609,10 @@
     {
       "name": "Composite",
       "extends": "Hub",
-      "doc": ".. todo::\n\n    FIXME: documentation needed",
+      "doc": "A :rom:cls:`Hub` that mixes the :rom:attr:`MediaType.AUDIO` stream of its connected sources and constructs a grid with the :rom:attr:`MediaType.VIDEO` streams of its connected sources into its sink",
       "constructors": [
         {
-          "doc": ".. todo::\n\n    FIXME: documentation needed",
+          "doc": "Create for the given pipeline",
           "params": [
             {
               "name": "mediaPipeline",
@@ -957,7 +957,7 @@
         },
         {
           "name": "connect",
-          "doc": "Connects all :rom:cls:`MediaSource` of this element belonging to the specified :rom:enum:`MediaType` to the corresponding :rom:cls:`MediaSink` of the target :rom:cls:`MediaElement`. This method will throw an exception if any of the following occur:\n\n   ..\n\n   * The number of sources for the specified :rom:enum:`MediaType` in this element is different than the number of sinks on the target element.\n   * There are duplicate mediaDescriptions on this' element sources for the specified :rom:enum:`MediaType`.\n   * There are duplicate mediaDescriptions on target's element sinks for the specified :rom:enum:`MediaType`.\n   * Target sinks' media descriptions are different form this sources' media descriptions for the specified :rom:enum:`MediaType`\n\nThis method is not transactional. In case of exception some of this element sources may be connected with target sinks.",
+          "doc": "Connects every :rom:cls:`MediaSource` of this element belonging to the specified :rom:enum:`MediaType` to the corresponding :rom:cls:`MediaSink` of the target :rom:cls:`MediaElement`. This method will throw an exception if any of the following occur:\n\n   ..\n\n   * The number of sources for the specified :rom:enum:`MediaType` in this element is different than the number of sinks on the target element.\n   * There are duplicate mediaDescriptions on this' element sources for the specified :rom:enum:`MediaType`.\n   * There are duplicate mediaDescriptions on target's element sinks for the specified :rom:enum:`MediaType`.\n   * Target sinks' media descriptions are different form this sources' media descriptions for the specified :rom:enum:`MediaType`\n\nThis method is not transactional. In case of exception some of this element sources may be connected with target sinks.",
           "params": [
             {
               "name": "sink",
