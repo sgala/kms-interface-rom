@@ -846,6 +846,11 @@
             }
           ]
         }
+      ],
+      "events": [
+        "CrowdDetectorFluidity",
+        "CrowdDetectorOccupancy",
+        "CrowdDetectorDirection"
       ]
     }
   ],
