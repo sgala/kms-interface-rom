@@ -741,7 +741,7 @@
       "methods": [
         {
           "name": "unsetOverlayedImage",
-          "doc": "Clear the image to be shown over each detected face.\n\n.. todo::\n\n    FIXME: behaviour?",
+          "doc": "Clear the image to be shown over each detected face. Stops overlying of the faces.",
           "params": []
         },
         {
@@ -817,7 +817,7 @@
             },
             {
               "name": "mediaProfile",
-              "doc": ".. todo::\n\n    FIXME: documentation needed",
+              "doc": "Choose either a :rom:attr:`WEBM` or a :rom:attr:`MP4` profile for recording",
               "type": "MediaProfileSpecType",
               "optional": true,
               "defaultValue": "WEBM"
@@ -857,7 +857,7 @@
         },
         {
           "name": "getMediaSrcs",
-          "doc": ".. todo::\n\n    FIXME: documentation needed",
+          "doc": "Get the media sources of the given type and description",
           "params": [
             {
               "name": "mediaType",
@@ -866,7 +866,7 @@
             },
             {
               "name": "description",
-              "doc": ".. todo::\n\n    FIXME: documentation needed",
+              "doc": "A textual description of the media source. Currently not used, aimed mainly for :rom:attr:`MediaType.DATA` sources",
               "type": "String"
             }
           ],
@@ -877,7 +877,7 @@
         },
         {
           "name": "getMediaSrcs",
-          "doc": ".. todo::\n\n    FIXME: documentation needed",
+          "doc": "get media sources of the given type",
           "params": [
             {
               "name": "mediaType",
@@ -925,7 +925,7 @@
             },
             {
               "name": "description",
-              "doc": ".. todo::\n\n    FIXME: documentation needed",
+              "doc": "A textual description of the media source. Currently not used, aimed mainly for :rom:attr:`MediaType.DATA` sources",
               "type": "String"
             }
           ],
@@ -950,7 +950,7 @@
             },
             {
               "name": "mediaDescription",
-              "doc": ".. todo::\n\n    FIXME: documentation needed",
+              "doc": "A textual description of the media source. Currently not used, aimed mainly for :rom:attr:`MediaType.DATA` sources",
               "type": "String"
             }
           ]
@@ -1008,7 +1008,7 @@
     },
     {
       "name": "CrowdDetectorFilter",
-      "doc": ".. todo::\n\n    FIXME: documentation needed",
+      "doc": "Filter that detects people agglomeration in video streams",
       "extends": "Filter",
       "constructors": [
         {
@@ -1042,7 +1042,7 @@
         "MP4"
       ],
       "name": "MediaProfileSpecType",
-      "doc": ".. todo::\n\n    FIXME: documentation needed"
+      "doc": "Media Profile.\n\nCurrently WEBM and MP4 are supported."
     },
     {
       "typeFormat": "ENUM",
@@ -1059,44 +1059,44 @@
       "properties": [
         {
           "name": "id",
-          "doc": ".. todo::\n\n    FIXME: documentation needed",
+          "doc": "id of the window for pointer detection",
           "type": "String"
         },
         {
           "name": "height",
-          "doc": ".. todo::\n\n    FIXME: documentation needed",
+          "doc": "height in pixels",
           "type": "int"
         },
         {
           "name": "width",
-          "doc": ".. todo::\n\n    FIXME: documentation needed",
+          "doc": "width in pixels",
           "type": "int"
         },
         {
           "name": "upperRightX",
-          "doc": ".. todo::\n\n    FIXME: documentation needed",
+          "doc": "X coordinate in pixels of the upper left corner",
           "type": "int"
         },
         {
           "name": "upperRightY",
-          "doc": ".. todo::\n\n    FIXME: documentation needed",
+          "doc": "Y coordinate in pixels of the upper left corner",
           "type": "int"
         },
         {
           "name": "activeImage",
-          "doc": ".. todo::\n\n    FIXME: documentation needed",
+          "doc": "uri of the image (cursor) to be used to indicate activity",
           "type": "String",
           "optional": true
         },
         {
           "name": "imageTransparency",
-          "doc": ".. todo::\n\n    FIXME: documentation needed",
+          "doc": "transparency ratio of the image",
           "type": "float",
           "optional": true
         },
         {
           "name": "image",
-          "doc": ".. todo::\n\n    FIXME: documentation needed",
+          "doc": "uri of the image (cursor) to be used when not active",
           "type": "String",
           "optional": true
         }
@@ -1370,7 +1370,7 @@
         },
         {
           "name": "type",
-          "doc": "Type of event raised\n\n.. todo::\n\n    ROM name?",
+          "doc": "Type of event that was raised",
           "type": "String"
         }
       ],
