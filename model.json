@@ -135,7 +135,7 @@
     {
       "name": "Hub",
       "extends": "MediaObject",
-      "doc": "A Hub is a routing :rom:cls:`MediaObject`. It connects several :rom:cls`endpoints <MediaEndpoint>` together",
+      "doc": "A Hub is a routing :rom:cls:`MediaObject`. It connects several :rom:cls:`endpoints <MediaEndpoint>` together",
       "abstract": true
     },
     {
