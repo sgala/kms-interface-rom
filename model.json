@@ -135,7 +135,7 @@
     {
       "name": "Hub",
       "extends": "MediaObject",
-      "doc": "A Hub is a routing :rom:cls:`MediaObject`. It connects several :rom:cls:`endpoints <MediaEndpoint>` together",
+      "doc": "A Hub is a routing :rom:cls:`MediaObject`. It connects several :rom:cls:`endpoints <Endpoint>` together",
       "abstract": true
     },
     {
@@ -283,7 +283,7 @@
     {
       "name": "HttpPostEndpoint",
       "extends": "HttpEndpoint",
-      "doc": "An :rom:cls:`HttpPostEndpoint` contains SINK pads for AUDIO and VIDEO, which provide access to an HTTP file upload function\n\n   This type of endpoint provide unidirectional communications. Its :rom:cls:`MediaSources<MediaSource>` are accessed through the :term:`HTTP` POST method.",
+      "doc": "An :rom:cls:`HttpPostEndpoint` contains SINK pads for AUDIO and VIDEO, which provide access to an HTTP file upload function\n\n   This type of endpoint provide unidirectional communications. Its :rom:cls:`MediaSources <MediaSource>` are accessed through the :term:`HTTP` POST method.",
       "constructors": [
         {
           "doc": "Builder for the :java:ref:`HttpPostEndpoint`.",
@@ -1084,7 +1084,7 @@
         },
         {
           "name": "activeImage",
-          "doc": "uri of the image (cursor) to be used to indicate activity",
+          "doc": "uri of the image to be used when the pointer is inside the window",
           "type": "String",
           "optional": true
         },
@@ -1096,7 +1096,7 @@
         },
         {
           "name": "image",
-          "doc": "uri of the image (cursor) to be used when not active",
+          "doc": "uri of the image to be used for the window.\n\nIf an :rom:attr:`activeImage` has been set, it will only be shown when the pointer is outside of the window.",
           "type": "String",
           "optional": true
         }
@@ -1220,7 +1220,7 @@
         }
       ],
       "name": "RegionOfInterestConfig",
-      "doc": ".. todo::\n\n    FIXME: documentation needed"
+      "doc": "data structure for configuration of CrowdDetector regions of interest"
     },
     {
       "typeFormat": "REGISTER",
@@ -1232,7 +1232,7 @@
         },
         {
           "name": "regionOfInterestConfig",
-          "doc": ".. todo::\n\n    FIXME: documentation needed",
+          "doc": "data structure for configuration of CrowdDetector regions of interest",
           "type": "RegionOfInterestConfig"
         },
         {
