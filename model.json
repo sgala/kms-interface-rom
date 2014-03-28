@@ -46,10 +46,10 @@
       "methods": [
         {
           "name": "getMediaPipeline",
-          "doc": "Returns the pipeline to which this MediaObject belong, or the pipeline itself if invoked over a :java:ref:`MediaPipeline`",
+          "doc": "Returns the pipeline to which this MediaObject belong, or the pipeline itself if invoked over a :rom:cls:`MediaPipeline`",
           "params": [],
           "return": {
-            "doc": "the MediaPipeline this MediaObject belongs to.\n\nIf called on a :java:cls:`MediaPipeline` it will return ``this``.",
+            "doc": "the MediaPipeline this MediaObject belongs to.\n\nIf called on a :rom:cls:`MediaPipeline` it will return ``this``.",
             "type": "MediaPipeline"
           }
         },
@@ -70,10 +70,10 @@
     {
       "name": "HttpGetEndpoint",
       "extends": "HttpEndpoint",
-      "doc": "An ``HttpGetEndpoint`` contains SOURCE pads for AUDIO and VIDEO, delivering media using HTML5 pseudo-streaming mechanism.\n\n   This type of endpoint provide unidirectional communications. Its :java:ref:`MediaSink` is associated with the HTTP GET method",
+      "doc": "An ``HttpGetEndpoint`` contains SOURCE pads for AUDIO and VIDEO, delivering media using HTML5 pseudo-streaming mechanism.\n\n   This type of endpoint provide unidirectional communications. Its :rom:cls:`MediaSink` is associated with the HTTP GET method",
       "constructors": [
         {
-          "doc": "Builder for the :java:ref:`HttpGetEndpoint`.",
+          "doc": "Builder for the :rom:cls:`HttpGetEndpoint`.",
           "params": [
             {
               "name": "mediaPipeline",
@@ -162,7 +162,7 @@
       "name": "Filter",
       "abstract": true,
       "extends": "MediaElement",
-      "doc": "Base interface for all filters. This is a certain type of :rom:cls:`MediaElement`, that processes media injected through its :java:ref:`MediaSink`, and delivers the outcome through its :rom:cls:`MediaSource`."
+      "doc": "Base interface for all filters. This is a certain type of :rom:cls:`MediaElement`, that processes media injected through its :rom:cls:`MediaSink`, and delivers the outcome through its :rom:cls:`MediaSource`."
     },
     {
       "name": "Endpoint",
@@ -176,11 +176,11 @@
       "doc": "This :rom:cls:`MediaElement` specifies a connection with a :rom:cls:`Hub`",
       "constructors": [
         {
-          "doc": "Creates a :rom:cls`HubPort` for the given :rom:cls:`Hub`",
+          "doc": "Creates a :rom:cls:`HubPort` for the given :rom:cls:`Hub`",
           "params": [
             {
               "name": "hub",
-              "doc": ":rom:cls`Hub` to which this port belongs",
+              "doc": ":rom:cls:`Hub` to which this port belongs",
               "type": "Hub"
             }
           ]
@@ -257,7 +257,7 @@
       "name": "UriEndpoint",
       "abstract": true,
       "extends": "Endpoint",
-      "doc": "Interface for endpoints the require a URI to work. An example of this, would be a :java:ref:`PlayerEndpoint` whose URI property could be used to locate a file to stream through its :java:ref:`MediaSource`",
+      "doc": "Interface for endpoints the require a URI to work. An example of this, would be a :rom:cls:`PlayerEndpoint` whose URI property could be used to locate a file to stream through its :rom:cls:`MediaSource`",
       "methods": [
         {
           "name": "getUri",
@@ -286,7 +286,7 @@
       "doc": "An :rom:cls:`HttpPostEndpoint` contains SINK pads for AUDIO and VIDEO, which provide access to an HTTP file upload function\n\n   This type of endpoint provide unidirectional communications. Its :rom:cls:`MediaSources <MediaSource>` are accessed through the :term:`HTTP` POST method.",
       "constructors": [
         {
-          "doc": "Builder for the :java:ref:`HttpPostEndpoint`.",
+          "doc": "Builder for the :rom:cls:`HttpPostEndpoint`.",
           "params": [
             {
               "name": "mediaPipeline",
@@ -317,7 +317,7 @@
     {
       "name": "RtpEndpoint",
       "extends": "SdpEndpoint",
-      "doc": "Endpoint that provides bidirectional content delivery capabilities with remote networked peers through RTP protocol. An :rom:cls`RtpEndpoint` contains paired sink and source :rom:cls`MediaPad` for audio and video.",
+      "doc": "Endpoint that provides bidirectional content delivery capabilities with remote networked peers through RTP protocol. An :rom:cls:`RtpEndpoint` contains paired sink and source :rom:cls:`MediaPad` for audio and video.",
       "constructors": [
         {
           "doc": "Builder for the :rom:cls:`RtpEndpoint`",
@@ -1096,7 +1096,7 @@
         },
         {
           "name": "image",
-          "doc": "uri of the image to be used for the window.\n\nIf an :rom:attr:`activeImage` has been set, it will only be shown when the pointer is outside of the window.",
+          "doc": "uri of the image to be used for the window.\n\nIf :rom:meth:`setActiveImage` has been called, it will only be shown when the pointer is outside of the window.",
           "type": "String",
           "optional": true
         }
