@@ -3,7 +3,7 @@
     {
       "name": "PlayerEndpoint",
       "extends": "UriEndpoint",
-      "doc": "Retrieves content from seekable sources in reliable\nmode (does not discard media information) and inject \nthem into :term:`KMS`. It\ncontains one :java:ref:`MediaSource` for each media type detected.",
+      "doc": "Retrieves content from seekable sources in reliable\nmode (does not discard media information) and inject \nthem into :term:`KMS`. It\ncontains one :rom:cls:`MediaSource` for each media type detected.",
       "constructors": [
         {
           "doc": "Create a PlayerEndpoint",
@@ -31,7 +31,7 @@
       "methods": [
         {
           "name": "play",
-          "doc": "Starts to send data to the endpoint :java:ref:`MediaSource`",
+          "doc": "Starts to send data to the endpoint :rom:cls:`MediaSource`",
           "params": []
         }
       ],
@@ -77,7 +77,7 @@
           "params": [
             {
               "name": "mediaPipeline",
-              "doc": "the :rom:cls:`MediaPipeline to which the endpoint belongs`",
+              "doc": "the :rom:cls:`MediaPipeline` to which the endpoint belongs",
               "type": "MediaPipeline"
             },
             {
@@ -89,7 +89,7 @@
             },
             {
               "name": "mediaProfile",
-              "doc": "the :rom:rec:`MediaProfileSpecType` (WEBM, MP4...) for the endpoint",
+              "doc": "the :rom:enum:`MediaProfileSpecType` (WEBM, MP4...) for the endpoint",
               "type": "MediaProfileSpecType",
               "optional": true,
               "defaultValue": "WEBM"
@@ -115,7 +115,7 @@
           "params": [
             {
               "name": "mediaPipeline",
-              "doc": "the :rom:cls:`MediaPipeline to which the endpoint belongs`",
+              "doc": "the :rom:cls:`MediaPipeline` to which the endpoint belongs",
               "type": "MediaPipeline"
             }
           ]
@@ -141,14 +141,14 @@
     {
       "name": "ZBarFilter",
       "extends": "Filter",
-      "doc": "This filter detects :term:`QR` codes in a video feed. When a code is found, the filter raises a :rom:ref:`CodeFound` event.",
+      "doc": "This filter detects :term:`QR` codes in a video feed. When a code is found, the filter raises a :rom:evnt:`CodeFound` event.",
       "constructors": [
         {
           "doc": "Builder for the :rom:cls:`ZBarFilter`.",
           "params": [
             {
               "name": "mediaPipeline",
-              "doc": "the :rom:cls:`MediaPipeline to which the filter belongs`",
+              "doc": "the :rom:cls:`MediaPipeline` to which the filter belongs",
               "type": "MediaPipeline"
             }
           ]
@@ -197,7 +197,7 @@
           "params": [
             {
               "name": "mediaPipeline",
-              "doc": "the :rom:cls:`MediaPipeline to which the filter belongs`",
+              "doc": "the :rom:cls:`MediaPipeline` to which the filter belongs",
               "type": "MediaPipeline"
             },
             {
@@ -290,7 +290,7 @@
           "params": [
             {
               "name": "mediaPipeline",
-              "doc": "the :rom:cls:`MediaPipeline to which the endpoint belongs`",
+              "doc": "the :rom:cls:`MediaPipeline` to which the endpoint belongs",
               "type": "MediaPipeline"
             },
             {
@@ -324,7 +324,7 @@
           "params": [
             {
               "name": "mediaPipeline",
-              "doc": "the :rom:cls:`MediaPipeline to which the endpoint belongs`",
+              "doc": "the :rom:cls:`MediaPipeline` to which the endpoint belongs",
               "type": "MediaPipeline"
             }
           ]
@@ -376,7 +376,7 @@
           "params": [
             {
               "name": "mediaPipeline",
-              "doc": "the :rom:cls:`MediaPipeline to which the filter belongs`",
+              "doc": "the :rom:cls:`MediaPipeline` to which the filter belongs",
               "type": "MediaPipeline"
             },
             {
@@ -460,7 +460,7 @@
           "params": [
             {
               "name": "mediaPipeline",
-              "doc": "the :rom:cls:`MediaPipeline to which the filter belongs`",
+              "doc": "the :rom:cls:`MediaPipeline` to which the filter belongs",
               "type": "MediaPipeline"
             },
             {
@@ -546,7 +546,7 @@
           "params": [
             {
               "name": "mediaPipeline",
-              "doc": "the :rom:cls:`MediaPipeline to which the dispatcher belongs`",
+              "doc": "the :rom:cls:`MediaPipeline` to which the dispatcher belongs",
               "type": "MediaPipeline"
             }
           ]
@@ -581,7 +581,7 @@
           "params": [
             {
               "name": "mediaPipeline",
-              "doc": "the :rom:cls:`MediaPipeline to which the dispatcher belongs`",
+              "doc": "the :rom:cls:`MediaPipeline` to which the dispatcher belongs",
               "type": "MediaPipeline"
             }
           ]
@@ -616,7 +616,7 @@
           "params": [
             {
               "name": "mediaPipeline",
-              "doc": "the :rom:cls:`MediaPipeline to which the dispatcher belongs`",
+              "doc": "the :rom:cls:`MediaPipeline` to which the dispatcher belongs",
               "type": "MediaPipeline"
             }
           ]
@@ -633,7 +633,7 @@
           "params": [
             {
               "name": "mediaPipeline",
-              "doc": "the :rom:cls:`MediaPipeline to which the filter belongs`",
+              "doc": "the :rom:cls:`MediaPipeline` to which the filter belongs",
               "type": "MediaPipeline"
             }
           ]
@@ -807,7 +807,7 @@
           "params": [
             {
               "name": "mediaPipeline",
-              "doc": "the :rom:cls:`MediaPipeline to which the endpoint belongs`",
+              "doc": "the :rom:cls:`MediaPipeline` to which the endpoint belongs",
               "type": "MediaPipeline"
             },
             {
@@ -994,7 +994,7 @@
           "params": [
             {
               "name": "mediaPipeline",
-              "doc": "the :rom:cls:`MediaPipeline to which the filter belongs`",
+              "doc": "the :rom:cls:`MediaPipeline` to which the filter belongs",
               "type": "MediaPipeline"
             },
             {
@@ -1016,7 +1016,7 @@
           "params": [
             {
               "name": "mediaPipeline",
-              "doc": "the :rom:cls:`MediaPipeline to which the filter belongs`",
+              "doc": "the :rom:cls:`MediaPipeline` to which the filter belongs",
               "type": "MediaPipeline"
             },
             {
