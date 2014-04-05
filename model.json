@@ -817,7 +817,7 @@
             },
             {
               "name": "mediaProfile",
-              "doc": "Choose either a :rom:attr:`WEBM` or a :rom:attr:`MP4` profile for recording",
+              "doc": "Choose either a :rom:attr:`MediaProfileSpecType.WEBM` or a :rom:attr:`MediaProfileSpecType.MP4` profile for recording",
               "type": "MediaProfileSpecType",
               "optional": true,
               "defaultValue": "WEBM"
@@ -1096,7 +1096,7 @@
         },
         {
           "name": "image",
-          "doc": "uri of the image to be used for the window.\n\nIf :rom:meth:`setActiveImage` has been called, it will only be shown when the pointer is outside of the window.",
+          "doc": "uri of the image to be used for the window.\n\nIf :rom:attr:`activeImage` has been set, it will only be shown when the pointer is outside of the window.",
           "type": "String",
           "optional": true
         }
