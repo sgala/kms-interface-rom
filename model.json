@@ -741,7 +741,7 @@
       "methods": [
         {
           "name": "unsetOverlayedImage",
-          "doc": "Clear the image to be shown over each detected face. Stops overlying of the faces.",
+          "doc": "Clear the image to be shown over each detected face. Stops overlaying the faces.",
           "params": []
         },
         {
