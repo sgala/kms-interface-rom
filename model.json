@@ -4,28 +4,13 @@
       "name": "PlayerEndpoint",
       "extends": "UriEndpoint",
       "doc": "Retrieves content from seekable sources in reliable\nmode (does not discard media information) and inject \nthem into :term:`KMS`. It\ncontains one :rom:cls:`MediaSource` for each media type detected.",
-      "constructors": [
+      "properties": [
         {
-          "doc": "Create a PlayerEndpoint",
-          "params": [
-            {
-              "name": "mediaPipeline",
-              "doc": "The :rom:cls:`MediaPipeline` this PlayerEndpoint belongs to.",
-              "type": "MediaPipeline"
-            },
-            {
-              "name": "uri",
-              "doc": "URI that will be played",
-              "type": "String"
-            },
-            {
-              "name": "useEncodedMedia",
-              "doc": "use encoded instead of raw media. If the parameter is false then the\nelement uses raw media. Changing this parameter can affect stability\nseverely, as lost key frames lost will not be regenerated. Changing the media type does not\naffect to the result except in the performance (just in the case where\noriginal media and target media are the same) and in the problem with the\nkey frames. We strongly recommended not to use this parameter because\ncorrect behaviour is not guarantied.",
-              "type": "boolean",
-              "optional": true,
-              "defaultValue": false
-            }
-          ]
+          "name": "useEncodedMedia",
+          "doc": "use encoded instead of raw media. If the parameter is false then the\nelement uses raw media. Changing this parameter can affect stability\nseverely, as lost key frames lost will not be regenerated. Changing the media type does not\naffect to the result except in the performance (just in the case where\noriginal media and target media are the same) and in the problem with the\nkey frames. We strongly recommended not to use this parameter because\ncorrect behaviour is not guarantied.",
+          "type": "boolean",
+          "mutable": false,
+          "defaultValue": false
         }
       ],
       "methods": [
@@ -43,24 +28,16 @@
       "name": "MediaObject",
       "doc": "Base for all objects that can be created in the media server.",
       "abstract": true,
-      "methods": [
-        {
-          "name": "getMediaPipeline",
-          "doc": "Returns the pipeline to which this MediaObject belong, or the pipeline itself if invoked over a :rom:cls:`MediaPipeline`",
-          "params": [],
-          "return": {
-            "doc": "the MediaPipeline this MediaObject belongs to.\n\nIf called on a :rom:cls:`MediaPipeline` it will return ``this``.",
-            "type": "MediaPipeline"
-          }
+      "properties" :[
+        { "name": "mediaPipeline",
+          "doc": "the pipeline to which this MediaObject belong, or the pipeline itself in a :rom:cls:`MediaPipeline`",
+          "type": "MediaPipeline",
+          "mutable": false
         },
-        {
-          "name": "getParent",
-          "doc": "Returns the parent of this media object. The type of the parent depends on the type of the element that this method is called upon:\n\nThe parent of a :rom:cls:`MediaPad` is its :rom:cls:`MediaElement`; the parent of a :rom:cls:`MediaMixer` or a :rom:cls:`MediaElement` is its :rom:cls:`MediaPipeline`.\n\nA :rom:cls:`MediaPipeline` has no parent, i.e. the method returns null",
-          "params": [],
-          "return": {
-            "doc": "the parent of this MediaObject or null if called on a MediaPipeline",
-            "type": "MediaObject"
-          }
+        { "name": "parent",
+          "doc": "the parent of this media object. The type of the parent depends on the type of the element:\n\nThe parent of a :rom:cls:`MediaPad` is its :rom:cls:`MediaElement`; the parent of a :rom:cls:`MediaMixer` or a :rom:cls:`MediaElement` is its :rom:cls:`MediaPipeline`.\n\nA :rom:cls:`MediaPipeline` has no parent, i.e. the this property holds a null value",
+          "type": "MediaObject",
+          "mutable": false
         }
       ],
       "events": [
@@ -71,37 +48,20 @@
       "name": "HttpGetEndpoint",
       "extends": "HttpEndpoint",
       "doc": "An ``HttpGetEndpoint`` contains SOURCE pads for AUDIO and VIDEO, delivering media using HTML5 pseudo-streaming mechanism.\n\n   This type of endpoint provide unidirectional communications. Its :rom:cls:`MediaSink` is associated with the HTTP GET method",
-      "constructors": [
+      "properties": [
         {
-          "doc": "Builder for the :rom:cls:`HttpGetEndpoint`.",
-          "params": [
-            {
-              "name": "mediaPipeline",
-              "doc": "the :rom:cls:`MediaPipeline` to which the endpoint belongs",
-              "type": "MediaPipeline"
-            },
-            {
-              "name": "terminateOnEOS",
-              "doc": "raise a :rom:evnt:`MediaSessionTerminated` event when the associated player raises a :rom:evnt:`EndOfStream`, and thus terminate the media session",
-              "type": "boolean",
-              "optional": true,
-              "defaultValue": false
-            },
-            {
-              "name": "mediaProfile",
-              "doc": "the :rom:enum:`MediaProfileSpecType` (WEBM, MP4...) for the endpoint",
-              "type": "MediaProfileSpecType",
-              "optional": true,
-              "defaultValue": "WEBM"
-            },
-            {
-              "name": "disconnectionTimeout",
-              "doc": "disconnection timeout in seconds.\n\nThis is the time that an http endpoint will wait for a reconnection, in case an HTTP connection is lost.",
-              "type": "int",
-              "optional": true,
-              "defaultValue": 2
-            }
-          ]
+          "name": "terminateOnEOS",
+          "doc": "raise a :rom:evnt:`MediaSessionTerminated` event when the associated player raises a :rom:evnt:`EndOfStream`, and thus terminate the media session",
+          "type": "boolean",
+          "mutable": false,
+          "defaultValue": false
+        },
+        {
+          "name": "mediaProfile",
+          "doc": "the :rom:enum:`MediaProfileSpecType` (WEBM, MP4...) for the endpoint",
+          "type": "MediaProfileSpecType",
+          "mutable": false,
+          "defaultValue": "WEBM"
         }
       ]
     },
@@ -109,24 +69,14 @@
       "name": "WebRtcEndpoint",
       "extends": "SdpEndpoint",
       "doc": "WebRtcEndpoint interface. This type of ``Endpoint`` offers media streaming using WebRTC.",
-      "constructors": [
-        {
-          "doc": "Builder for the :rom:cls:`WebRtcEndpoint`",
-          "params": [
-            {
-              "name": "mediaPipeline",
-              "doc": "the :rom:cls:`MediaPipeline` to which the endpoint belongs",
-              "type": "MediaPipeline"
-            }
-          ]
-        }
-      ]
+      "properties": []
     },
     {
       "name": "SessionEndpoint",
       "doc": "Session based endpoint. A session is considered to be started when the media exchange starts. On the other hand, sessions terminate when a timeout, defined by the developer, takes place after the connection is lost.",
       "abstract": true,
       "extends": "Endpoint",
+      "properties": [],
       "events": [
         "MediaSessionTerminated",
         "MediaSessionStarted"
@@ -136,24 +86,14 @@
       "name": "Hub",
       "extends": "MediaObject",
       "doc": "A Hub is a routing :rom:cls:`MediaObject`. It connects several :rom:cls:`endpoints <Endpoint>` together",
+      "properties": [],
       "abstract": true
     },
     {
       "name": "ZBarFilter",
       "extends": "Filter",
       "doc": "This filter detects :term:`QR` codes in a video feed. When a code is found, the filter raises a :rom:evnt:`CodeFound` event.",
-      "constructors": [
-        {
-          "doc": "Builder for the :rom:cls:`ZBarFilter`.",
-          "params": [
-            {
-              "name": "mediaPipeline",
-              "doc": "the :rom:cls:`MediaPipeline` to which the filter belongs",
-              "type": "MediaPipeline"
-            }
-          ]
-        }
-      ],
+      "properties": [],
       "events": [
         "CodeFound"
       ]
@@ -162,28 +102,26 @@
       "name": "Filter",
       "abstract": true,
       "extends": "MediaElement",
-      "doc": "Base interface for all filters. This is a certain type of :rom:cls:`MediaElement`, that processes media injected through its :rom:cls:`MediaSink`, and delivers the outcome through its :rom:cls:`MediaSource`."
+      "doc": "Base interface for all filters. This is a certain type of :rom:cls:`MediaElement`, that processes media injected through its :rom:cls:`MediaSink`, and delivers the outcome through its :rom:cls:`MediaSource`.",
+      "properties": []
     },
     {
       "name": "Endpoint",
       "abstract": true,
       "extends": "MediaElement",
-      "doc": "Base interface for all end points. An Endpoint is a :rom:cls:`MediaElement`\nthat allow :term:`KMS` to interchange media contents with external systems,\nsupporting different transport protocols and mechanisms, such as :term:`RTP`,\n:term:`WebRTC`, :term:`HTTP`, ``file:/`` URLs... An ``Endpoint`` may\ncontain both sources and sinks for different media types, to provide\nbidirectional communication."
+      "doc": "Base interface for all end points. An Endpoint is a :rom:cls:`MediaElement`\nthat allow :term:`KMS` to interchange media contents with external systems,\nsupporting different transport protocols and mechanisms, such as :term:`RTP`,\n:term:`WebRTC`, :term:`HTTP`, ``file:/`` URLs... An ``Endpoint`` may\ncontain both sources and sinks for different media types, to provide\nbidirectional communication.",
+      "properties": []
     },
     {
       "name": "HubPort",
       "extends": "MediaElement",
       "doc": "This :rom:cls:`MediaElement` specifies a connection with a :rom:cls:`Hub`",
-      "constructors": [
+      "properties": [
         {
-          "doc": "Creates a :rom:cls:`HubPort` for the given :rom:cls:`Hub`",
-          "params": [
-            {
-              "name": "hub",
-              "doc": ":rom:cls:`Hub` to which this port belongs",
-              "type": "Hub"
-            }
-          ]
+          "name": "hub",
+          "doc": ":rom:cls:`Hub` to which this port belongs",
+          "type": "Hub",
+          "mutable": false
         }
       ]
     },
@@ -191,61 +129,26 @@
       "name": "PointerDetectorAdvFilter",
       "extends": "Filter",
       "doc": "This type of :rom:cls:`Filter` detects UI pointers in a video feed.",
-      "constructors": [
+      "properties": [
         {
-          "doc": "Builder for the :rom:cls:`PointerDetectorAdvFilter`.",
-          "params": [
-            {
-              "name": "mediaPipeline",
-              "doc": "the :rom:cls:`MediaPipeline` to which the filter belongs",
-              "type": "MediaPipeline"
-            },
-            {
-              "name": "calibrationRegion",
-              "doc": "region to calibrate the filter",
-              "type": "WindowParam"
-            },
-            {
-              "name": "windows",
-              "doc": "list of detection windows for the filter.",
-              "type": "PointerDetectorWindowMediaParam[]",
-              "optional": true
-            }
-          ]
+          "name": "calibrationRegion",
+          "doc": "region to calibrate the filter",
+          "type": "WindowParam",
+          "mutable": false
+        },
+        {
+          "name": "windows",
+          "doc": "list of detection windows for the filter.",
+          "type": "PointerDetectorWindowMediaParam[]",
+          "mutable": true,
+          "defaultValue": []
         }
       ],
       "methods": [
         {
-          "name": "addWindow",
-          "doc": " Adds a new detection window for the filter to detect pointers entering or exiting the window",
-          "params": [
-            {
-              "name": "window",
-              "doc": "The window to be added",
-              "type": "PointerDetectorWindowMediaParam"
-            }
-          ]
-        },
-        {
-          "name": "clearWindows",
-          "doc": "Removes all pointer detector windows",
-          "params": []
-        },
-        {
           "name": "trackColorFromCalibrationRegion",
           "doc": "This method allows to calibrate the tracking color.\n\nThe new tracking color will be the color of the object in the colorCalibrationRegion.",
           "params": []
-        },
-        {
-          "name": "removeWindow",
-          "doc": "Removes a window from the list to be monitored",
-          "params": [
-            {
-              "name": "windowId",
-              "doc": "the id of the window to be removed",
-              "type": "String"
-            }
-          ]
         }
       ],
       "events": [
@@ -258,16 +161,15 @@
       "abstract": true,
       "extends": "Endpoint",
       "doc": "Interface for endpoints the require a URI to work. An example of this, would be a :rom:cls:`PlayerEndpoint` whose URI property could be used to locate a file to stream through its :rom:cls:`MediaSource`",
-      "methods": [
+      "properties": [
         {
-          "name": "getUri",
-          "doc": "Returns the uri for this endpoint.",
-          "params": [],
-          "return": {
-            "doc": "the uri as a String",
-            "type": "String"
-          }
-        },
+          "name": "uri",
+          "doc": "URI that will be used",
+          "type": "String",
+          "mutable": false
+        }
+      ],
+      "methods": [
         {
           "name": "pause",
           "doc": "Pauses the feed",
@@ -284,30 +186,13 @@
       "name": "HttpPostEndpoint",
       "extends": "HttpEndpoint",
       "doc": "An :rom:cls:`HttpPostEndpoint` contains SINK pads for AUDIO and VIDEO, which provide access to an HTTP file upload function\n\n   This type of endpoint provide unidirectional communications. Its :rom:cls:`MediaSources <MediaSource>` are accessed through the :term:`HTTP` POST method.",
-      "constructors": [
+      "properties": [
         {
-          "doc": "Builder for the :rom:cls:`HttpPostEndpoint`.",
-          "params": [
-            {
-              "name": "mediaPipeline",
-              "doc": "the :rom:cls:`MediaPipeline` to which the endpoint belongs",
-              "type": "MediaPipeline"
-            },
-            {
-              "name": "disconnectionTimeout",
-              "doc": "This is the time that an http endpoint will wait for a reconnection, in case an HTTP connection is lost.",
-              "type": "int",
-              "optional": true,
-              "defaultValue": 2
-            },
-            {
-              "name": "useEncodedMedia",
-              "doc": "configures the endpoint to use encoded media instead of raw media. If the parameter is not set then the element uses raw media. Changing this parameter could affect in a severe way to stability because key frames lost will not be generated. Changing the media type does not affect to the result except in the performance (just in the case where original media and target media are the same) and in the problem with the key frames. We strongly recommended not to use this parameter because correct behaviour is not guarantied.",
-              "type": "boolean",
-              "optional": true,
-              "defaultValue": false
-            }
-          ]
+          "name": "useEncodedMedia",
+          "doc": "configures the endpoint to use encoded media instead of raw media. If the parameter is not set then the element uses raw media. Changing this parameter could affect in a severe way to stability because key frames lost will not be generated. Changing the media type does not affect to the result except in the performance (just in the case where original media and target media are the same) and in the problem with the key frames. We strongly recommended not to use this parameter because correct behaviour is not guarantied.",
+          "type": "boolean",
+          "mutable": false,
+          "defaultValue": false
         }
       ],
       "events": [
@@ -318,50 +203,36 @@
       "name": "RtpEndpoint",
       "extends": "SdpEndpoint",
       "doc": "Endpoint that provides bidirectional content delivery capabilities with remote networked peers through RTP protocol. An :rom:cls:`RtpEndpoint` contains paired sink and source :rom:cls:`MediaPad` for audio and video.",
-      "constructors": [
-        {
-          "doc": "Builder for the :rom:cls:`RtpEndpoint`",
-          "params": [
-            {
-              "name": "mediaPipeline",
-              "doc": "the :rom:cls:`MediaPipeline` to which the endpoint belongs",
-              "type": "MediaPipeline"
-            }
-          ]
-        }
-      ]
+      "properties": []
     },
     {
       "name": "MediaPad",
       "abstract": true,
       "extends": "MediaObject",
       "doc": "A :rom:cls:`MediaPad` is an element´s interface with the outside world. The data streams flow from the :rom:cls:`MediaSource` pad to another element's :rom:cls:`MediaSink` pad.",
+      "properties": [
+        {
+          "name": "mediaType",
+          "doc": "the type of media that this pad accepts. One of :rom:attr:`MediaType.AUDIO`, :rom:attr:`MediaType.DATA` or :rom:attr:`MediaType.VIDEO`",
+          "type": "MediaType",
+          "mutable": false
+        },
+        {
+          "name": "mediaDescription",
+          "doc": "description for this pad.\n\n   This method does not make a request to the media server, and is included to keep the simmetry with the rest of methods from the API.",
+          "type": "String",
+          "mutable": false,
+          "defaultValue": ""
+       }
+      ],
       "methods": [
         {
           "name": "getMediaElement",
-          "doc": "Obtains the :rom:cls:`MediaElement` that encloses this pad",
+          "doc": "Obtains the parent :rom:cls:`MediaElement` that encloses this pad. Returns the value of the :rom:attr:`parent` property.",
           "params": [],
           "return": {
             "doc": "the element",
             "type": "MediaElement"
-          }
-        },
-        {
-          "name": "getMediaType",
-          "doc": "Obtains the type of media that this pad accepts",
-          "params": [],
-          "return": {
-            "doc": "One of :rom:attr:`MediaType.AUDIO`, :rom:attr:`MediaType.DATA` or :rom:attr:`MediaType.VIDEO`",
-            "type": "MediaType"
-          }
-        },
-        {
-          "name": "getMediaDescription",
-          "doc": "Obtains the description for this pad.\n\n   This method does not make a request to the media server, and is included to keep the simmetry with the rest of methods from the API.",
-          "params": [],
-          "return": {
-            "doc": "The description",
-            "type": "String"
           }
         }
       ]
@@ -370,51 +241,11 @@
       "name": "PointerDetectorFilter",
       "extends": "Filter",
       "doc": "This type of :rom:cls:`Filter` detects pointers in a video feed.",
-      "constructors": [
-        {
-          "doc": "Builder for the :rom:cls:`PointerDetectorFilter`.",
-          "params": [
-            {
-              "name": "mediaPipeline",
-              "doc": "the :rom:cls:`MediaPipeline` to which the filter belongs",
-              "type": "MediaPipeline"
-            },
-            {
-              "name": "windows",
-              "doc": "list of detection windows for the filter to detect pointers entering or exiting the window",
-              "type": "PointerDetectorWindowMediaParam[]",
-              "optional": true
-            }
-          ]
-        }
-      ],
-      "methods": [
-        {
-          "name": "addWindow",
-          "doc": "Adds a pointer detector window. When a pointer enters or exits this window, the filter will raise an event indicating so.",
-          "params": [
-            {
-              "name": "window",
-            "doc": "the detection window",
-              "type": "PointerDetectorWindowMediaParam"
-            }
-          ]
-        },
-        {
-          "name": "clearWindows",
-          "doc": "Removes all pointer detector windows",
-          "params": []
-        },
-        {
-          "name": "removeWindow",
-          "doc": "Removes a pointer detector window",
-          "params": [
-            {
-              "name": "windowId",
-              "doc": "id of the window to be removed",
-              "type": "String"
-            }
-          ]
+      "properties": [
+        { "name": "windows",
+          "doc": "list of detection windows for the filter to detect pointers entering or exiting the window (add, clear, remove)",
+          "type": "PointerDetectorWindowMediaParam[]",
+          "mutable": true
         }
       ],
       "events": [
@@ -427,16 +258,17 @@
       "abstract": true,
       "extends": "MediaPad",
       "doc": "Special type of pad, used by a media element to generate a media stream.",
-      "methods": [
+      "properties": [
         {
-          "name": "getConnectedSinks",
-          "doc": "Gets all the :rom:cls:`MediaSinks<MediaSink>` to which this source is connected",
-          "params": [],
-          "return": {
-            "doc": "the list of sinks that the source is connected to",
-            "type": "MediaSink[]"
-          }
-        },
+          "name": "connectedSinks",
+          "doc": ":rom:cls:`MediaSinks<MediaSink>` to which this source is connected",
+          "type": "MediaSink[]",
+          "mutable": false,
+          "volatile": true,
+          "defaultValue": []
+        }
+      ],
+      "methods": [
         {
           "name": "connect",
           "doc": "Connects the current source with a :rom:cls:`MediaSink`",
@@ -454,45 +286,19 @@
       "name": "ChromaFilter",
       "extends": "Filter",
       "doc": "ChromaFilter interface. This type of :rom:cls:`Filter` makes transparent a colour\nrange in the top layer, revealing another image behind",
-      "constructors": [
+      "properties": [
         {
-          "doc": "Create a :rom:cls:`ChromaFilter`",
-          "params": [
-            {
-              "name": "mediaPipeline",
-              "doc": "the :rom:cls:`MediaPipeline` to which the filter belongs",
-              "type": "MediaPipeline"
-            },
-            {
-              "name": "window",
-              "doc": "Window of replacement for the :rom:cls:`ChromaFilter`",
-              "type": "WindowParam"
-            },
-            {
-              "name": "backgroundImage",
-              "doc": "url of image to be used to replace the detected background",
-              "type": "String",
-              "optional": true
-            }
-          ]
-        }
-      ],
-      "methods": [
-        {
-          "name": "setBackground",
-          "doc": "Sets the image to show on the detected chroma surface.",
-          "params": [
-            {
-              "name": "uri",
-              "doc": "URI where the image is located",
-              "type": "String"
-            }
-          ]
+          "name": "window",
+          "doc": "Window of replacement for the :rom:cls:`ChromaFilter`",
+          "type": "WindowParam",
+          "mutable": false
         },
         {
-          "name": "unsetBackground",
-          "doc": "Clears the image used to be shown behind the chroma surface.",
-          "params": []
+          "name": "backgroundImage",
+          "doc": "url of image to be used to replace the detected background",
+          "type": "String",
+          "mutable": true,
+          "defaultValue": null
         }
       ]
     },
@@ -500,19 +306,23 @@
       "name": "MediaPipeline",
       "extends": "MediaObject",
       "doc": "A pipeline is a container for a collection of :rom:cls:`MediaElements<MediaElement>` and :rom:cls:`MediaMixers<MediaMixer>`. It offers the methods needed to control the creation and connection of elements inside a certain pipeline.",
-      "constructors": [
-        {
-          "doc": "Create a :rom:cls:`MediaPipeline`",
-          "params": [
-          ]
-        }
-      ]
+      "properties": []
     },
     {
       "name": "MediaSink",
       "abstract": true,
       "extends": "MediaPad",
       "doc": "Special type of pad, used by a :rom:cls:`MediaElement` to receive a media stream.",
+      "properties": [
+        {
+          "name": "connectedSrc",
+          "type": "MediaSource",
+          "doc": "the :rom:cls:`MediaSource` that is connected to this sink.",
+          "mutable": false,
+          "volatile": true,
+          "defaultValue": null
+        }
+      ],
       "methods": [
         {
           "name": "disconnect",
@@ -524,34 +334,14 @@
               "type": "MediaSource"
             }
           ]
-        },
-        {
-          "name": "getConnectedSrc",
-          "doc": "Gets the :rom:cls:`MediaSource` that is connected to this sink.",
-          "params": [],
-          "return": {
-            "doc": "The source connected to this sink",
-            "type": "MediaSource"
-          }
         }
       ]
     },
     {
       "name": "Dispatcher",
-      "doc": "A :rom:cls:`Hub` that allows routing between arbitrary port pairs",
       "extends": "Hub",
-      "constructors": [
-        {
-          "doc": "Create a :rom:cls:`Dispatcher` belonging to the given pipeline.",
-          "params": [
-            {
-              "name": "mediaPipeline",
-              "doc": "the :rom:cls:`MediaPipeline` to which the dispatcher belongs",
-              "type": "MediaPipeline"
-            }
-          ]
-        }
-      ],
+      "doc": "A :rom:cls:`Hub` that allows routing between arbitrary port pairs",
+      "properties": [],
       "methods": [
         {
           "name": "connect",
@@ -575,34 +365,13 @@
       "name": "DispatcherOneToMany",
       "extends": "Hub",
       "doc": "A :rom:cls:`Hub` that sends a given source to all the connected sinks",
-      "constructors": [
+      "properties": [
         {
-          "doc": "Create a :rom:cls:`DispatcherOneToMany` belonging to the given pipeline.",
-          "params": [
-            {
-              "name": "mediaPipeline",
-              "doc": "the :rom:cls:`MediaPipeline` to which the dispatcher belongs",
-              "type": "MediaPipeline"
-            }
-          ]
-        }
-      ],
-      "methods": [
-        {
-          "name": "setSource",
-          "doc": "Sets the source port that will be connected to the sinks of every :rom:cls:`HubPort` of the dispatcher",
-          "params": [
-            {
-              "name": "source",
-              "doc": "source to be broadcasted",
-              "type": "HubPort"
-            }
-          ]
-        },
-        {
-          "name": "removeSource",
-          "doc": "Remove the source port and stop the media pipeline.",
-          "params": []
+          "name": "source",
+          "doc": "source to be broadcasted",
+          "type": "HubPort",
+          "mutable": true,
+          "defaultValue": null
         }
       ]
     },
@@ -610,50 +379,32 @@
       "name": "Composite",
       "extends": "Hub",
       "doc": "A :rom:cls:`Hub` that mixes the :rom:attr:`MediaType.AUDIO` stream of its connected sources and constructs a grid with the :rom:attr:`MediaType.VIDEO` streams of its connected sources into its sink",
-      "constructors": [
-        {
-          "doc": "Create for the given pipeline",
-          "params": [
-            {
-              "name": "mediaPipeline",
-              "doc": "the :rom:cls:`MediaPipeline` to which the dispatcher belongs",
-              "type": "MediaPipeline"
-            }
-          ]
-        }
-      ]
+      "properties": []
     },
     {
       "name": "JackVaderFilter",
       "extends": "Filter",
       "doc": "Filter that detects faces in a video feed. Those on the right half of the feed are overlaid with a pirate hat, and those on the left half are covered by a Darth Vader helmet. This is an example filter, intended to demonstrate how to integrate computer vision capabilities into the multimedia infrastructure.",
-      "constructors": [
-        {
-          "doc": "Create a new :rom:cls:`Filter`",
-          "params": [
-            {
-              "name": "mediaPipeline",
-              "doc": "the :rom:cls:`MediaPipeline` to which the filter belongs",
-              "type": "MediaPipeline"
-            }
-          ]
-        }
-      ]
+      "properties": []
     },
     {
       "name": "HttpEndpoint",
       "abstract": true,
       "extends": "SessionEndpoint",
       "doc": "Endpoint that enables Kurento to work as an HTTP server, allowing peer HTTP clients to access media.",
-      "methods": [
+      "properties": [
         {
-          "name": "getUrl",
-          "doc": "Obtains the URL associated to this endpoint",
-          "params": [],
-          "return": {
-            "doc": "The url as a String",
-            "type": "String"
-          }
+          "name": "url",
+          "type": "String",
+          "doc": "the URL associated to this endpoint",
+          "mutable": false
+        },
+        {
+          "name": "disconnectionTimeout",
+          "doc": "disconnection timeout in seconds.\n\nThis is the time that an http endpoint will wait for a reconnection, in case an HTTP connection is lost.",
+          "type": "int",
+          "mutable": false,
+          "defaultValue": 2
         }
       ]
     },
@@ -662,6 +413,22 @@
       "abstract": true,
       "extends": "SessionEndpoint",
       "doc": "Implements an SDP negotiation endpoint able to generate and process offers/responses and that configures resources according to negotiated Session Description",
+      "properties": [
+        {
+          "name": "localSessionDescriptor",
+          "type": "String",
+          "doc": "SessionSpec offered by this NetworkConnection.\n\n.. note:: Holds the local MediaSpec, negotiated or not. If no offer has been generated yet, it has a null value. It an offer has been generated it has the offer and if an answer has been processed it holds the negotiated local SessionSpec.",
+          "mutable": true,
+          "defaultValue": null
+        },
+        {
+          "name": "remoteSessionDescriptor",
+          "type": "String",
+          "doc": "Remote session description.\n\n.. note:: It holds the media previously agreed after a complete offer-answer exchange. If no media has been agreed yet, it holds a null value.",
+          "mutable": true,
+          "defaultValue": null
+        }
+      ],
       "methods": [
         {
           "name": "generateOffer",
@@ -701,24 +468,6 @@
             "doc": "Updated SDP offer, based on the answer received.",
             "type": "String"
           }
-        },
-        {
-          "name": "getLocalSessionDescriptor",
-          "doc": "This method gives access to the SessionSpec offered by this NetworkConnection.\n\n.. note:: This method returns the local MediaSpec, negotiated or not. If no offer has been generated yet, it returns null. It an offer has been generated it returns the offer and if an answer has been processed it returns the negotiated local SessionSpec.",
-          "params": [],
-          "return": {
-            "doc": "The last agreed SessionSpec",
-            "type": "String"
-          }
-        },
-        {
-          "name": "getRemoteSessionDescriptor",
-          "doc": "This method gives access to the remote session description.\n\n.. note:: This method returns the media previously agreed after a complete offer-answer exchange. If no media has been agreed yet, it returns null.",
-          "params": [],
-          "return": {
-            "doc": "The last agreed User Agent session description",
-            "type": "String"
-          }
         }
       ]
     },
@@ -726,16 +475,41 @@
       "name": "FaceOverlayFilter",
       "extends": "Filter",
       "doc": "FaceOverlayFilter interface. This type of :rom:cls:`Filter` detects faces in a video feed. The face is then overlaid with an image.",
-      "constructors": [
+      "properties": [
         {
-          "doc": "FaceOverlayFilter interface. This type of :rom:cls:`Filter` detects faces in a video feed. The face is then overlaid with an image.",
-          "params": [
-            {
-              "name": "mediaPipeline",
-              "doc": "pipeline to which this :rom:cls:`Filter` belons",
-              "type": "MediaPipeline"
-            }
-          ]
+          "name": "overlayedImage",
+          "doc": "uri of image to be shown over each detected face",
+          "type": "String",
+          "mutable": true,
+          "defaultValue": null
+        },
+        {
+          "name": "offsetXPercent",
+          "doc": "the offset applied to the image, from the X coordinate of the detected face upper right corner. A positive value indicates right displacement, while a negative value moves the overlaid image to the left. This offset is specified as a percentage of the face width.\n\nFor example, to cover the detected face with the overlaid image, the parameter has to be ``0.0``. Values of ``1.0`` or ``-1.0`` indicate that the image upper right corner will be at the face´s X coord, +- the face´s width.\n\n.. note::\n\n    The parameter name is misleading, the value is not a percent but a ratio",
+          "type": "float",
+          "mutable": true,
+          "defaultValue": 0.0
+        },
+        {
+          "name": "offsetYPercent",
+          "doc": "the offset applied to the image, from the Y coordinate of the detected face upper right corner. A positive value indicates up displacement, while a negative value moves the overlaid image down. This offset is specified as a percentage of the face width.\n\nFor example, to cover the detected face with the overlaid image, the parameter has to be ``0.0``. Values of ``1.0`` or ``-1.0`` indicate that the image upper right corner will be at the face´s Y coord, +- the face´s width.\n\n.. note::\n\n    The parameter name is misleading, the value is not a percent but a ratio",
+          "type": "float",
+          "mutable": true,
+          "defaultValue": 0.0
+        },
+        {
+          "name": "widthPercent",
+          "doc": "proportional width of the overlaid image, relative to the width of the detected face. A value of 1.0 implies that the overlaid image will have the same width as the detected face. Values greater than 1.0 are allowed, while negative values are forbidden.\n\n.. note::\n\n    The parameter name is misleading, the value is not a percent but a ratio",
+          "type": "float",
+          "mutable": true,
+          "defaultValue": 1.0
+        },
+        {
+          "name": "heightPercent",
+          "doc": "proportional height of the overlaid image, relative to the height of the detected face. A value of 1.0 implies that the overlaid image will have the same height as the detected face. Values greater than 1.0 are allowed, while negative values are forbidden.\n\n.. note::\n\n    The parameter name is misleading, the value is not a percent but a ratio",
+          "type": "float",
+          "mutable": true,
+          "defaultValue": 1.0
         }
       ],
       "methods": [
@@ -781,18 +555,7 @@
       "name": "PlateDetectorFilter",
       "extends": "Filter",
       "doc": "PlateDetectorFilter interface. This type of :rom:cls:`Endpoint` detects\nvehicle plates in a video feed.",
-      "constructors": [
-        {
-          "doc": "Create a :rom:cls:`PlateDetectorFilter` for the given :rom:cls:`MediaPipeline`",
-          "params": [
-            {
-              "name": "mediaPipeline",
-              "doc": "the parent :rom:cls:`MediaPipeline` of this :rom:cls:`PlateDetectorFilter`",
-              "type": "MediaPipeline"
-            }
-          ]
-        }
-      ],
+      "properties": [],
       "events": [
         "PlateDetected"
       ]
@@ -801,35 +564,20 @@
       "name": "RecorderEndpoint",
       "extends": "UriEndpoint",
       "doc": "Provides function to store contents in reliable mode (doesn't discard data). It contains :rom:cls:`MediaSink` pads for audio and video.",
-      "constructors": [
+      "properties": [
         {
-          "doc": "",
-          "params": [
-            {
-              "name": "mediaPipeline",
-              "doc": "the :rom:cls:`MediaPipeline` to which the endpoint belongs",
-              "type": "MediaPipeline"
-            },
-            {
-              "name": "uri",
-              "doc": "URI where the recording will be stored",
-              "type": "String"
-            },
-            {
-              "name": "mediaProfile",
-              "doc": "Choose either a :rom:attr:`MediaProfileSpecType.WEBM` or a :rom:attr:`MediaProfileSpecType.MP4` profile for recording",
-              "type": "MediaProfileSpecType",
-              "optional": true,
-              "defaultValue": "WEBM"
-            },
-            {
-              "name": "stopOnEndOfStream",
-              "doc": "Forces the recorder endpoint to finish processing data when an :term:`EOS` is detected in the stream",
-              "type": "boolean",
-              "optional": true,
-              "defaultValue": false
-            }
-          ]
+          "name": "mediaProfile",
+          "doc": "Either :rom:attr:`MediaProfileSpecType.WEBM` or :rom:attr:`MediaProfileSpecType.MP4` profile for recording",
+          "type": "MediaProfileSpecType",
+          "mutable": false,
+          "defaultValue": "WEBM"
+        },
+        {
+          "name": "stopOnEndOfStream",
+          "doc": "Forces the recorder endpoint to finish processing data when an :term:`EOS` is detected in the stream",
+          "type": "boolean",
+          "mutable": false,
+          "defaultValue": false
         }
       ],
       "methods": [
@@ -845,16 +593,21 @@
       "abstract": true,
       "extends": "MediaObject",
       "doc": "Basic building blocks of the media server, that can be interconnected through the API. A :rom:cls:`MediaElement` is a module that encapsulates a specific media capability. They can be connected to create media pipelines where those capabilities are applied, in sequence, to the stream going through the pipeline.\n\n   :rom:cls:`MediaElement` objects are classified by its supported media type (audio, video, etc.) and the flow direction: :rom:cls:`MediaSource` pads are intended for media delivery while :rom:cls:`MediaSinks<MediaSink>`  behave as reception points.",
-      "methods": [
+      "properties": [
         {
-          "name": "getMediaSrcs",
-          "doc": "Get the :rom:cls:`sources <MediaSource>` of this element",
-          "params": [],
-          "return": {
-            "doc": "A list of sources. The list will be empty if no sources are found.",
-            "type": "MediaSource[]"
-          }
+          "name": "mediaSrcs",
+          "doc": ":rom:cls:`sources <MediaSource>` of this element",
+          "type": "MediaSource[]",
+          "mutable": true
         },
+        {
+          "name": "mediaSinks",
+          "doc": ":rom:cls:`sinks <MediaSink>` of this element",
+          "type": "MediaSink[]",
+          "mutable": true
+        }
+      ],
+      "methods": [
         {
           "name": "getMediaSrcs",
           "doc": "Get the media sources of the given type and description",
@@ -862,27 +615,14 @@
             {
               "name": "mediaType",
               "doc": "One of :rom:attr:`MediaType.AUDIO`, :rom:attr:`MediaType.VIDEO` or :rom:attr:`MediaType.DATA`",
-              "type": "MediaType"
+              "type": "MediaType",
+              "optional": true
             },
             {
               "name": "description",
               "doc": "A textual description of the media source. Currently not used, aimed mainly for :rom:attr:`MediaType.DATA` sources",
-              "type": "String"
-            }
-          ],
-          "return": {
-            "doc": "A list of sources. The list will be empty if no sources are found.",
-            "type": "MediaSource[]"
-          }
-        },
-        {
-          "name": "getMediaSrcs",
-          "doc": "get media sources of the given type",
-          "params": [
-            {
-              "name": "mediaType",
-              "doc": "One of :rom:attr:`MediaType.AUDIO`, :rom:attr:`MediaType.VIDEO` or :rom:attr:`MediaType.DATA`",
-              "type": "MediaType"
+              "type": "String",
+              "optional": true
             }
           ],
           "return": {
@@ -892,68 +632,25 @@
         },
         {
           "name": "getMediaSinks",
-          "doc": "Get the :rom:cls:`sinks <MediaSink>` of this element",
-          "params": [],
-          "return": {
-            "doc": "A list of sinks. The list will be empty if no sinks are found.",
-            "type": "MediaSink[]"
-          }
-        },
-        {
-          "name": "getMediaSinks",
-          "doc": "A list of sinks of the given :rom:ref:`MediaType`. The list will be empty if no sinks are found.",
+          "doc": "A list of sinks of the given :rom:ref:`MediaType` and description. The list will be empty if no sinks are found.",
           "params": [
             {
               "name": "mediaType",
               "doc": "One of :rom:attr:`MediaType.AUDIO`, :rom:attr:`MediaType.VIDEO` or :rom:attr:`MediaType.DATA`",
-              "type": "MediaType"
-            }
-          ],
-          "return": {
-            "doc": "A list of sinks. The list will be empty if no sinks are found.",
-            "type": "MediaSink[]"
-          }
-        },
-        {
-          "name": "getMediaSinks",
-          "doc": "A list of sinks of the given :rom:ref:`MediaType`. The list will be empty if no sinks are found.",
-          "params": [
-            {
-              "name": "mediaType",
-              "doc": "One of :rom:attr:`MediaType.AUDIO`, :rom:attr:`MediaType.VIDEO` or :rom:attr:`MediaType.DATA`",
-              "type": "MediaType"
+              "type": "MediaType",
+              "optional": true
             },
             {
               "name": "description",
               "doc": "A textual description of the media source. Currently not used, aimed mainly for :rom:attr:`MediaType.DATA` sources",
-              "type": "String"
+              "type": "String",
+              "optional": true
             }
           ],
           "return": {
             "doc": "A list of sinks. The list will be empty if no sinks are found.",
             "type": "MediaSink[]"
           }
-        },
-        {
-          "name": "connect",
-          "doc": "perform :rom:meth:`connect(sink,mediaType)` if there is exactly one sink for the given type, and their mediaDescriptions are the same",
-          "params": [
-            {
-              "name": "sink",
-              "doc": "the target :rom:cls:`MediaElement`  from which :rom:cls:`MediaSink` will be obtained",
-              "type": "MediaElement"
-            },
-            {
-              "name": "mediaType",
-              "doc": "the :rom:enum:`MediaType` of the pads that will be connected",
-              "type": "MediaType"
-            },
-            {
-              "name": "mediaDescription",
-              "doc": "A textual description of the media source. Currently not used, aimed mainly for :rom:attr:`MediaType.DATA` sources",
-              "type": "String"
-            }
-          ]
         },
         {
           "name": "connect",
@@ -967,18 +664,14 @@
             {
               "name": "mediaType",
               "doc": "the :rom:enum:`MediaType` of the pads that will be connected",
-              "type": "MediaType"
-            }
-          ]
-        },
-        {
-          "name": "connect",
-          "doc": "perform :rom:meth:`connect(sink,mediaType)` for every available :rom:cls:`MediaType` in this source",
-          "params": [
+              "type": "MediaType",
+              "optional": true
+            },
             {
-              "name": "sink",
-              "doc": "the target :rom:cls:`MediaElement`  from which :rom:cls:`MediaSink` will be obtained",
-              "type": "MediaElement"
+              "name": "mediaDescription",
+              "doc": "A textual description of the media source. Currently not used, aimed mainly for :rom:attr:`MediaType.DATA` sources",
+              "type": "String",
+              "optional": true
             }
           ]
         }
@@ -988,21 +681,12 @@
       "name": "GStreamerFilter",
       "extends": "Filter",
       "doc": "This is a generic filter interface, that creates GStreamer filters in the media server.",
-      "constructors": [
+      "properties": [
         {
-          "doc": "Create a :rom:cls:`GStreamerFilter`",
-          "params": [
-            {
-              "name": "mediaPipeline",
-              "doc": "the :rom:cls:`MediaPipeline` to which the filter belongs",
-              "type": "MediaPipeline"
-            },
-            {
-              "name": "command",
-              "doc": "command that would be used to instantiate the filter, as in `gst-launch <http://rpm.pbone.net/index.php3/stat/45/idpl/19531544/numer/1/nazwa/gst-launch-1.0>`__",
-              "type": "String"
-            }
-          ]
+          "name": "command",
+          "doc": "command that will be used to instantiate the filter, same syntax as in `gst-launch <http://rpm.pbone.net/index.php3/stat/45/idpl/19531544/numer/1/nazwa/gst-launch-1.0>`__",
+          "type": "String",
+          "mutable": false
         }
       ]
     },
@@ -1010,21 +694,12 @@
       "name": "CrowdDetectorFilter",
       "doc": "Filter that detects people agglomeration in video streams",
       "extends": "Filter",
-      "constructors": [
+      "properties": [
         {
-          "doc": "Create a :rom:cls:`CrowdDetectorFilter`",
-          "params": [
-            {
-              "name": "mediaPipeline",
-              "doc": "the :rom:cls:`MediaPipeline` to which the filter belongs",
-              "type": "MediaPipeline"
-            },
-            {
-              "name": "rois",
-              "doc": "Regions of interest for the filter",
-              "type": "RegionOfInterest[]"
-            }
-          ]
+          "name": "rois",
+          "doc": "Regions of interest for the filter",
+          "type": "RegionOfInterest[]",
+          "mutable": false
         }
       ],
       "events": [
@@ -1359,7 +1034,6 @@
       "extends": "Media",
       "name": "WindowOut",
       "doc": "Event generated when an object exits a window."
-
     },
     {
       "properties": [
