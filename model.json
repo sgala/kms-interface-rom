@@ -35,7 +35,7 @@
           "mutable": false
         },
         { "name": "parent",
-          "doc": "the parent of this media object. The type of the parent depends on the type of the element:\n\nThe parent of a :rom:cls:`MediaPad` is its :rom:cls:`MediaElement`; the parent of a :rom:cls:`MediaMixer` or a :rom:cls:`MediaElement` is its :rom:cls:`MediaPipeline`.\n\nA :rom:cls:`MediaPipeline` has no parent, i.e. the this property holds a null value",
+          "doc": "the parent of this media object. The type of the parent depends on the type of the element:\n\nThe parent of a :rom:cls:`MediaPad` is its :rom:cls:`MediaElement`; the parent of a :rom:cls:`Hub` or a :rom:cls:`MediaElement` is its :rom:cls:`MediaPipeline`.\n\nA :rom:cls:`MediaPipeline` has no parent, i.e. the this property holds a null value",
           "type": "MediaObject",
           "mutable": false
         }
@@ -305,7 +305,7 @@
     {
       "name": "MediaPipeline",
       "extends": "MediaObject",
-      "doc": "A pipeline is a container for a collection of :rom:cls:`MediaElements<MediaElement>` and :rom:cls:`MediaMixers<MediaMixer>`. It offers the methods needed to control the creation and connection of elements inside a certain pipeline.",
+      "doc": "A pipeline is a container for a collection of :rom:cls:`MediaElements<MediaElement>` and :rom:cls:`Hubs<Hub>`. It offers the methods needed to control the creation and connection of elements inside a certain pipeline.",
       "properties": []
     },
     {
